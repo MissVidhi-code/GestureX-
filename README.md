@@ -45,6 +45,18 @@ The hand tracking comes from MediaPipe. The work in this project is making it *u
 - **Throttled system calls.** Setting volume launches a process, so writes only happen when the value changes enough and enough time has passed.
 - **Honest brightness HUD.** Brightness uses Apple's DisplayServices framework, because the usual `brightness` command fails on Apple Silicon built-in displays. If a write can't be confirmed, the HUD bar turns grey instead of pretending it worked.
 
+## Project structure
+
+```
+GestureX-/
+├── air_control.py            # main app: gestures, filters, OS control, HUD
+├── Hand_Tracking_Module.py   # MediaPipe wrapper (handdetector class)
+├── requirements.txt
+└── README.md
+```
+
+`air_control.py` imports `handdetector` from `Hand_Tracking_Module.py`, so both files must sit in the same folder.
+
 ## Setup
 
 **Platform:** macOS. The mouse, volume and brightness code uses macOS APIs (Quartz, AppleScript, DisplayServices).
